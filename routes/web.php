@@ -21,4 +21,12 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function (){
 
+    Route::group(['prefix' => 'student'], function (){
+
+    });
+
+    Route::group(['prefix' => 'teacher'], function (){
+
+    });
+
 });
