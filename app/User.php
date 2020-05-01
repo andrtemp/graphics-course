@@ -5,12 +5,15 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use phpDocumentor\Reflection\Types\Static_;
 
 /**
  * Class User
  * @property $role
  * @property $name
  * @package App
+ * @method static create($data)
+ * @method static find($id)
  */
 class User extends Authenticatable
 {

@@ -7,7 +7,7 @@
 
     @case('teacher')
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('teacher.lessons') }}">{{ __('Lessons') }}</a>
+        <a class="nav-link" href="{{ route('lessons.index') }}">{{ __('Lessons') }}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('teacher.tasks') }}">{{ __('Home tasks') }}</a>

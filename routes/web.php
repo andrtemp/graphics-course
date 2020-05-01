@@ -27,7 +27,11 @@ Route::group(['middleware' => 'auth'], function (){
     });
 
     Route::group(['prefix' => 'teacher'], function (){
-        Route::get('lessons', 'TeacherController@lessons')->name('teacher.lessons');
+        Route::resource('lessons', 'Resource\LessonController');
+        Route::get('lessons/{id}/test/create', 'Resource\LessonController@testCreate')->name('test.create');
+        Route::post('lessons/{id}/test/create', 'Resource\LessonController@testStore')->name('test.store');
+        Route::delete('test/{id}', 'Resource\LessonController@testDestroy')->name('test.destroy');
+        Route::resource('home-task', 'Resource\LessonController');
         Route::get('tasks', 'TeacherController@tasks')->name('teacher.tasks');
     });
 
