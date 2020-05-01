@@ -10900,6 +10900,18 @@ body .main-items__element {
   text-align: center;
 }
 
+@media screen and (max-width: 800px) {
+  body .main-items__element {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  body .main-items__element {
+    width: 100%;
+  }
+}
+
 body .main-items__element:hover {
   transform: scale(1.1);
   border-radius: 5px;

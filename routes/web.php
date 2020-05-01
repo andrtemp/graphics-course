@@ -22,11 +22,17 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'student'], function (){
-
+        Route::get('lessons', 'StudentController@lessons')->name('student.lessons');
+        Route::get('marks', 'StudentController@marks')->name('student.marks');
     });
 
     Route::group(['prefix' => 'teacher'], function (){
+        Route::get('lessons', 'TeacherController@lessons')->name('teacher.lessons');
+        Route::get('tasks', 'TeacherController@tasks')->name('teacher.tasks');
+    });
 
+    Route::group(['prefix' => 'admin'], function (){
+       Route::resource('users', 'Resource\UserController');
     });
 
 });
