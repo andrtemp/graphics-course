@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::delete('test/{id}', 'Resource\LessonController@testDestroy')->name('test.destroy');
         Route::resource('home-task', 'Resource\LessonController');
         Route::get('tasks', 'TeacherController@tasks')->name('teacher.tasks');
+        Route::get('attendance', 'TeacherController@attendance')->name('attendance');
     });
 
     Route::group(['prefix' => 'admin'], function (){
