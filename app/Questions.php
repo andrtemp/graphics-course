@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Questions
+ * @package App
+ * @method static create($data)
+ */
 class Questions extends Model
 {
     /** @var string */
@@ -20,6 +25,6 @@ class Questions extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

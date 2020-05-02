@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @method static create($data)
  * @method static find($id)
+ * @method static where($type, $value)
  */
 class TestQuestions extends Model
 {

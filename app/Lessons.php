@@ -26,6 +26,14 @@ class Lessons extends Model
      */
     public function questions()
     {
-        return $this->hasMany('App\TestQuestions','lesson_id');
+        return $this->hasMany('App\TestQuestions', 'lesson_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mark()
+    {
+        return $this->hasOne('App\TestResults', 'lesson_id')->where('user_id', current_user()->id);
     }
 }

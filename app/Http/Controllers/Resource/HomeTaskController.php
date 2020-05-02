@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Hometasks;
 use App\Http\Controllers\Controller;
+use App\Lessons;
 use Illuminate\Http\Request;
 
 class HomeTaskController extends Controller
@@ -25,7 +26,7 @@ class HomeTaskController extends Controller
     {
         $hometasks = Hometasks::all();
 
-        return view('resource.lesson.index', compact('hometasks'));
+        return view('resource.home-task.index', compact('hometasks'));
     }
 
     /**
@@ -35,7 +36,9 @@ class HomeTaskController extends Controller
      */
     public function create()
     {
-        //
+        $lessons = Lessons::all(['id', 'topic']);
+
+        return view('resource.home-task.form',compact('lessons'));
     }
 
     /**
@@ -46,7 +49,14 @@ class HomeTaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'lesson_id' => 'required',
+            'text' => 'required'
+        ]);
+
+        Hometasks::create($data);
+
+        return redirect()->route('home-tasks.index');
     }
 
     /**
@@ -91,6 +101,8 @@ class HomeTaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Hometasks::find($id)->delete();
+
+        return redirect()->route('home-tasks.index');
     }
 }

@@ -1,0 +1,123 @@
+.lesson {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  &__item {
+    height: 200px;
+    width: 300px;
+    padding: 2em;
+    margin: 10px;
+    border-radius: 1em;
+
+    a {
+      text-decoration: none;
+      color: #1d2124;
+    }
+
+    &_active {
+      background: #B79F48;
+
+      a {
+        color: #ffffff;
+      }
+    }
+
+    &_passed {
+      background: #909091;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 1s;
+      box-shadow: 5px 5px 1em #4e555b;
+    }
+
+    .item {
+      &__main {
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 2em;
+      }
+
+      &__footer {
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+      }
+
+      &__mark{
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 4em;
+        font-weight: bold;
+        font-style: italic;
+        opacity: 1;
+        color: #ff0b20;
+      }
+    }
+
+  }
+}
+
+.task {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  &__item {
+    height: 200px;
+    width: 300px;
+    padding: 2em;
+    margin: 10px;
+    border-radius: 1em;
+
+    a {
+      text-decoration: none;
+      color: #1d2124;
+    }
+
+    &_active {
+      background: #B79F48;
+
+      a {
+        color: #ffffff;
+      }
+    }
+
+    &_passed {
+      background: #909091;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 1s;
+      box-shadow: 5px 5px 1em #4e555b;
+    }
+
+    .task {
+      &__header {
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 2em;
+      }
+
+      &__mark{
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 4em;
+        font-weight: bold;
+        font-style: italic;
+        opacity: 1;
+        color: #ff0b20;
+      }
+    }
+
+  }
+}

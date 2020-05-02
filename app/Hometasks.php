@@ -4,6 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Hometasks
+ * @package App
+ * @method static create($data)
+ * @method static find($id)
+ */
 class Hometasks extends Model
 {
     /** @var string */
@@ -28,5 +34,13 @@ class Hometasks extends Model
     public function results()
     {
         return $this->hasMany('App\HometaskResults', 'task_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mark()
+    {
+        return $this->hasOne('App\HometaskResults', 'task_id')->where('user_id', current_user()->id);
     }
 }

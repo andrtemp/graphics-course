@@ -19,25 +19,34 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth'], function () {
 
-    Route::group(['prefix' => 'student'], function (){
+    Route::group(['prefix' => 'student'], function () {
         Route::get('lessons', 'StudentController@lessons')->name('student.lessons');
-        Route::get('marks', 'StudentController@marks')->name('student.marks');
+        Route::get('tasks', 'StudentController@tasks')->name('student.tasks');
+        Route::get('question', 'StudentController@question')->name('student.question');
+        Route::get('question/form', 'StudentController@questionForm')->name('student.question.form');
+        Route::get('tasks/{id}', 'StudentController@task')->name('student.task.form');
+        Route::get('lessons/{id}', 'StudentController@lesson')->name('student.lesson.view');
+        Route::get('test/{id}', 'StudentController@test')->name('student.test.form');
+        Route::post('test/{id}', 'StudentController@saveTest')->name('student.test.store');
+        Route::post('task/{id}', 'StudentController@saveTask')->name('student.task.store');
+        Route::post('question/form', 'StudentController@questionStore')->name('student.question.store');
+
     });
 
-    Route::group(['prefix' => 'teacher'], function (){
-        Route::resource('lessons', 'Resource\LessonController');
-        Route::get('lessons/{id}/test/create', 'Resource\LessonController@testCreate')->name('test.create');
-        Route::post('lessons/{id}/test/create', 'Resource\LessonController@testStore')->name('test.store');
-        Route::delete('test/{id}', 'Resource\LessonController@testDestroy')->name('test.destroy');
-        Route::resource('home-task', 'Resource\LessonController');
+    Route::group(['prefix' => 'teacher'], function () {
         Route::get('tasks', 'TeacherController@tasks')->name('teacher.tasks');
         Route::get('attendance', 'TeacherController@attendance')->name('attendance');
     });
 
-    Route::group(['prefix' => 'admin'], function (){
-       Route::resource('users', 'Resource\UserController');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('users', 'Resource\UserController');
+        Route::resource('lessons', 'Resource\LessonController');
+        Route::get('lessons/{id}/test/create', 'Resource\LessonController@testCreate')->name('test.create');
+        Route::post('lessons/{id}/test/create', 'Resource\LessonController@testStore')->name('test.store');
+        Route::delete('test/{id}', 'Resource\LessonController@testDestroy')->name('test.destroy');
+        Route::resource('home-tasks', 'Resource\HomeTaskController');
     });
 
 });

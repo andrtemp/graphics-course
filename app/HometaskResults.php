@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class HometaskResults
+ * @package App
+ * @property $user_id
+ */
 class HometaskResults extends Model
 {
     /** @var string */
@@ -30,5 +35,16 @@ class HometaskResults extends Model
     public function task()
     {
         return $this->belongsTo('App\Hometask','task_id');
+    }
+
+    /**
+     * @param array $options
+     * @return bool
+     */
+    public function save(array $options = [])
+    {
+        $this->user_id = current_user()->id;
+
+        return parent::save($options);
     }
 }
