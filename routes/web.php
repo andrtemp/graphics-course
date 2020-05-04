@@ -37,7 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'teacher'], function () {
         Route::get('tasks', 'TeacherController@tasks')->name('teacher.tasks');
-        Route::get('attendance', 'TeacherController@attendance')->name('attendance');
+        Route::get('tasks/{id}', 'TeacherController@tasksShow')->name('teacher.tasks.show');
+        Route::post('tasks/{id}', 'TeacherController@tasksMark')->name('teacher.tasks.mark');
+        Route::get('attendance', 'TeacherController@attendance')->name('teacher.attendance');
+        Route::get('questions', 'TeacherController@questions')->name('teacher.questions');
+        Route::get('questions/{id}', 'TeacherController@questionsShow')->name('teacher.questions.show');
+        Route::post('questions/{id}', 'TeacherController@answer')->name('teacher.questions.answer');
     });
 
     Route::group(['prefix' => 'admin'], function () {

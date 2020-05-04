@@ -16,7 +16,10 @@
         <a class="nav-link" href="{{ route('teacher.tasks') }}">{{ __('Home tasks') }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('attendance') }}">{{ __('Attendance') }}</a>
+        <a class="nav-link" href="{{ route('teacher.attendance') }}">{{ __('Attendance') }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('teacher.questions') }}">{{ __('Question') }}</a>
     </li>
     @break
 

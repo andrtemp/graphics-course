@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Questions
  * @package App
+ * @property $answer
  * @method static create($data)
+ * @method static find($id)
  */
 class Questions extends Model
 {

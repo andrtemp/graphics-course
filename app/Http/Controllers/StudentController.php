@@ -25,7 +25,8 @@ class StudentController extends Controller
      */
     public function lessons()
     {
-        $lessons = Lessons::all();
+        $id = TestResults::where('user_id', current_user()->id)->max('lesson_id');
+        $lessons = Lessons::where('id', '<=', $id + 1)->get();
 
         return view('student.lesson.index', compact('lessons'));
     }
@@ -122,10 +123,18 @@ class StudentController extends Controller
         $service = new TestService($id);
         $mark = $service->validateTest($data['answers']);
 
-        $result = new TestResults();
-        $result->mark = $mark;
-        $result->lesson_id = $id;
-        $result->save();
+        /** @var TestResults|null $result */
+        $result = TestResults::where('lesson_id', $id)->where('user_id', current_user()->id)->first();
+        if (is_null($result)) {
+            $result = new TestResults();
+            $result->mark = $mark;
+            $result->lesson_id = $id;
+            $result->save();
+        } else {
+            $result->mark = $mark;
+            $result->save();
+        }
+
 
         return redirect()->route('student.lessons');
     }
@@ -142,6 +151,7 @@ class StudentController extends Controller
         ]);
 
         $data['task_id'] = $id;
+        $data['user_id'] = current_user()->id;
 
         $result = new HometaskResults();
         $result->fill($data);

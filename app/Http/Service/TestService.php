@@ -6,7 +6,7 @@ use App\TestQuestions;
 
 class TestService
 {
-    const COUNT = 10;
+    const COUNT = 5;
 
     /**
      * @var integer

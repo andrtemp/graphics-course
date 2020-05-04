@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class HometaskResults
  * @package App
  * @property $user_id
+ * @property $mark
+ * @method static find($id)
  */
 class HometaskResults extends Model
 {
@@ -34,7 +36,7 @@ class HometaskResults extends Model
      */
     public function task()
     {
-        return $this->belongsTo('App\Hometask','task_id');
+        return $this->belongsTo('App\Hometasks','task_id');
     }
 
     /**
@@ -43,8 +45,6 @@ class HometaskResults extends Model
      */
     public function save(array $options = [])
     {
-        $this->user_id = current_user()->id;
-
         return parent::save($options);
     }
 }
